@@ -11,7 +11,22 @@ export default class TodoItem extends Component {
     // console.log(this.props.index);
     deleteFn(index)
   }
+  // componentWillReceiveProps(){
+  //   console.log('componentWillReceiveProps');
+  // }
+  // componentWillUnmount(){
+  //   console.log('componentWillUnmount');
+  // }
+  shouldComponentUpdate(nextProps,nextState){
+    if(nextProps.content!==this.props.content){
+      return true
+    }else{
+      return false
+    }
+  }
   render() {
+    console.log('child render');
+    
     const { content, test} = this.props
     return (
       <li onClick={this.handleClick} >
@@ -23,7 +38,7 @@ export default class TodoItem extends Component {
 
 TodoItem.propTypes = {
   test:PropTypes.string.isRequired,
-  content:PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  content:PropTypes.string,
   deleteFn:PropTypes.func,
   index:PropTypes.number
 }

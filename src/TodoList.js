@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
+import axios from 'axios'
 
 
 export default class TodoList extends Component {
@@ -25,6 +26,7 @@ export default class TodoList extends Component {
   }
   handleInputChange(e){
     const value = this.input.value
+    // const value = e.target.value
     this.setState(()=>({
       inputValue:value
     }))
@@ -53,7 +55,29 @@ export default class TodoList extends Component {
         })
     )
   }
+  // componentWillMount(){
+  //   console.log('componentWillMount');
+  // }
+  componentDidMount(){
+    // console.log('componentDidMount');
+    axios.get('api/todolist').then(()=>{
+      // alert('succ')
+    }).catch(()=>{
+      // alert('err')
+    })
+  }
+  // shouldComponentUpdate(){
+  //   console.log('shouldComponentUpdate');
+  //   return true
+  // }
+  // componentWillUpdate(){
+  //   console.log('componentWillUpdate');
+  // }
+  // componentDidUpdate(){
+  //   console.log('componentDidUpdate')
+  // }
   render() {
+    console.log('render')
     return (
       <Fragment>
       <div>
@@ -64,13 +88,14 @@ export default class TodoList extends Component {
           onChange={this.handleInputChange} 
           type="text"
           ref={(input)=>{this.input=input}}
-        />
+        />        
         <button className='red-btn' onClick={this.handleBtnClick}>add</button>
       </div>
       <ul ref={(ul)=>{this.ul=ul}}>
         {this.getTodoItem()}
       </ul>
       </Fragment>
+     
     )
   }
 }
