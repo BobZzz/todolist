@@ -43,5 +43,5 @@ TodoItem.propTypes = {
   index:PropTypes.number
 }
 TodoItem.defaultProps = {
-  test:'isTest'
+  test:'iTest'
 }
