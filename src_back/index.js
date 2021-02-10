@@ -3,18 +3,10 @@ import ReactDOM from 'react-dom';
 // import './index.css';
 import TodoList from './TodoList';
 import 'antd/dist/antd.css'
-import { Provider } from 'react-redux'
-import store from './store'
-
-const App = (
-  <Provider store={store}>
-    <TodoList />
-  </Provider>
-)
 
 ReactDOM.render(
   // <React.StrictMode>
-    App,
+    <TodoList />,
   // </React.StrictMode>,
   document.getElementById('root')
 );
